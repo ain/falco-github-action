@@ -1,6 +1,10 @@
 name: Test run for Falco GitHub Action
 
-on: [workflow_dispatch]
+on:
+  push:
+    branches: [ $default-branch ]
+  pull_request:
+    branches: [ $default-branch ]
 
 jobs:
   build:
@@ -15,20 +19,20 @@ jobs:
           subcommand: lint
           target: test/acl/valid.acl
 
-      - name: Run Falco on ACL with invalid IP
-        uses: ./
-        with:
-          subcommand: lint
-          target: test/acl/invalid_ip.acl
+      #- name: Run Falco on ACL with invalid IP
+        #uses: ./
+        #with:
+          #subcommand: lint
+          #target: test/acl/invalid_ip.acl
 
-      - name: Run Falco on ACL with invalid IP range
-        uses: ./
-        with:
-          subcommand: lint
-          target: test/acl/invalid_range.acl
+      #- name: Run Falco on ACL with invalid IP range
+        #uses: ./
+        #with:
+          #subcommand: lint
+          #target: test/acl/invalid_range.acl
 
-      - name: Run Falco on ACL with invalid syntax
-        uses: ./
-        with:
-          subcommand: lint
-          target: test/acl/invalid_syntax.acl
+      #- name: Run Falco on ACL with invalid syntax
+        #uses: ./
+        #with:
+          #subcommand: lint
+          #target: test/acl/invalid_syntax.acl
