@@ -1,0 +1,27 @@
+name: 'Falco'
+description: 'Falco Fastly VCL parser'
+inputs:
+  subcommand:
+    description: 'Falco subcommand'
+    required: true
+    default: 'lint'
+  target:
+    description: 'File path to VCL'
+    required: true
+  verbosity:
+    description: 'Verbosity'
+    required: false
+  include:
+    description: 'Include path'
+    required: false
+outputs:
+  time: # id of output
+    description: 'The time we greeted you'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.subcommand }}
+    - ${{ inputs.include }}
+    - ${{ inputs.verbosity }}
+    - ${{ inputs.target }}
