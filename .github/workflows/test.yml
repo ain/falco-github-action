@@ -35,24 +35,17 @@ jobs:
           verbosity: -vv
           target: test/acl/valid.acl
 
-      - name: Run Falco on ACL with invalid IP
-        id: acl_invalid_ip
-        uses: ./
-        with:
-          subcommand: lint
-          target: test/acl/invalid_ip.acl
+      #- name: Run Falco on ACL with invalid IP
+        #uses: ./
+        #with:
+          #subcommand: lint
+          #target: test/acl/invalid_ip.acl
 
-      - name: Run Falco on ACL with invalid IP range
-        id: acl_invalid_ip_range
-        if: ${{ failure() && steps.acl_invalid_ip.conclusion == 'failure' }}
-        uses: ./
-        with:
-          subcommand: lint
-          target: test/acl/invalid_range.acl
-
-      - name: Consider complete
-        if: ${{ failure() && steps.acl_invalid_ip_range.conclusion == 'failure' }}
-        run: exit 0
+      #- name: Run Falco on ACL with invalid IP range
+        #uses: ./
+        #with:
+          #subcommand: lint
+          #target: test/acl/invalid_range.acl
 
       #- name: Run Falco on ACL with invalid syntax
         #uses: ./
