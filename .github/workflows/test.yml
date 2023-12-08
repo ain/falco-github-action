@@ -9,8 +9,8 @@ on:
       - main
 
 jobs:
-  build:
-    runs-on: ubuntu-20.04
+  acl:
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
@@ -52,3 +52,41 @@ jobs:
         #with:
           #subcommand: lint
           #target: test/acl/invalid_syntax.acl
+  vcl:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run Falco on valid VCL
+        uses: ./
+        with:
+          subcommand: lint
+          target: test/vcl/valid.vcl
+
+      - name: Run Falco on valid VCL with verbosity
+        uses: ./
+        with:
+          subcommand: lint
+          verbosity: -v
+          target: test/vcl/valid.vcl
+
+      - name: Run Falco on valid VCL with most verbosity
+        uses: ./
+        with:
+          subcommand: lint
+          verbosity: -vv
+          target: test/vcl/valid.vcl
+
+      - name: Run Falco on valid VCL with include
+        uses: ./
+        with:
+          subcommand: lint
+          include: test/vcl/included_items.vcl
+          target: test/vcl/valid.vcl
+
+      #- name: Run Falco on invalid VCL
+        #uses: ./
+        #with:
+          #subcommand: lint
+          #target: test/vcl/invalid_syntax.acl
