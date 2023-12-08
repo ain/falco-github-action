@@ -1,5 +1,8 @@
 
 sub vcl_recv {
+  if (!req.http.Accept-Encoding || req.http.Accept-Encoding == "") {
+    error 600;
+  }
 #FASTLY recv
 }
 
@@ -22,6 +25,10 @@ sub vcl_deliver {
 }
 
 sub vcl_error {
+  if (obj.status == 600) {
+    set obj.status = 400;
+    set obj.response = "Bad request";
+  }
 #FASTLY error
 }
 
