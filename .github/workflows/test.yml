@@ -82,7 +82,8 @@ jobs:
         uses: ./
         with:
           subcommand: lint
-          include: test/vcl/included_items.vcl
+          verbosity: -vv
+          include: test/vcl/blocked_urls.vcl
           target: test/vcl/valid.vcl
 
       #- name: Run Falco on invalid VCL
