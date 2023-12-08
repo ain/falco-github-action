@@ -1,0 +1,16 @@
+name: Example run for Falco GitHub Action
+
+on: [workflow_dispatch]
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+
+  steps:
+    - uses: actions/checkout@v2
+
+    - name: Run Falco
+      uses: ./
+      with:
+        subcommand: lint
+        target: test/acl/valid.acl
