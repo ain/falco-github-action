@@ -25,14 +25,14 @@ jobs:
         uses: ./
         with:
           subcommand: lint
-          verbosity: normal
+          options: -v
           target: test/acl/valid.acl
 
       - name: Run Falco on valid ACL with high verbosity
         uses: ./
         with:
           subcommand: lint
-          verbosity: high
+          options: -vv
           target: test/acl/valid.acl
 
       #- name: Run Falco on ACL with invalid IP
