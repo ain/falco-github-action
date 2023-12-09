@@ -1,6 +1,6 @@
 # falco-github-action
 
-Falco GitHub Action for VCL parsing and validation.
+Falco GitHub Action for Fastly VCL parsing and validation.
 
 ## Usage
 
