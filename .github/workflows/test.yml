@@ -68,22 +68,21 @@ jobs:
         uses: ./
         with:
           subcommand: lint
-          verbosity: normal
+          options: -v
           target: test/vcl/valid.vcl
 
       - name: Run Falco on valid VCL with high verbosity
         uses: ./
         with:
           subcommand: lint
-          verbosity: high
+          options: -vv
           target: test/vcl/valid.vcl
 
-      - name: Run Falco on valid VCL with include, normal velocity
+      - name: Run Falco on valid VCL with include, normal verbosity
         uses: ./
         with:
           subcommand: lint
-          verbosity: normal
-          include: test/vcl/blocked_urls.vcl
+          options: "-v -I test/vcl/includes"
           target: test/vcl/valid_with_include.vcl
 
       #- name: Run Falco on invalid VCL

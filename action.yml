@@ -8,11 +8,8 @@ inputs:
   target:
     description: 'File path to VCL'
     required: true
-  verbosity:
-    description: 'Verbosity'
-    required: false
-  include:
-    description: 'Include path'
+  options:
+    description: 'Optional flags'
     required: false
 outputs:
   time: # id of output
@@ -22,6 +19,5 @@ runs:
   image: 'Dockerfile'
   args:
     - ${{ inputs.subcommand }}
-    - ${{ inputs.include }}
-    - ${{ inputs.verbosity }}
+    - ${{ inputs.options }}
     - ${{ inputs.target }}
