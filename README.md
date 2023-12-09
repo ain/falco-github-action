@@ -17,7 +17,7 @@ Falco GitHub Action for VCL validation.
 
 | Input | Default | Required | Description |
 | ----- | ------- | -------- | ----------- |
-| `subdommand` | `lint` | yes | Run linter on VCL (or ACL) |
+| `subcommand` | `lint` | yes | Run linter on VCL (or ACL) |
 | `options` | - | no | Optional flags, see [Common Flags of Falco](https://github.com/ysugimoto/falco#usage) |
 | `target` | - | yes | VCL (or ACL) to target, e.g. to lint |
 
