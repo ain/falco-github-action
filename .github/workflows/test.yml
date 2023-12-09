@@ -21,18 +21,18 @@ jobs:
           subcommand: lint
           target: test/acl/valid.acl
 
-      - name: Run Falco on valid ACL with verbosity
+      - name: Run Falco on valid ACL with normal verbosity
         uses: ./
         with:
           subcommand: lint
-          verbosity: -v
+          verbosity: normal
           target: test/acl/valid.acl
 
-      - name: Run Falco on valid ACL with most verbosity
+      - name: Run Falco on valid ACL with high verbosity
         uses: ./
         with:
           subcommand: lint
-          verbosity: -vv
+          verbosity: high
           target: test/acl/valid.acl
 
       #- name: Run Falco on ACL with invalid IP
@@ -64,25 +64,25 @@ jobs:
           subcommand: lint
           target: test/vcl/valid.vcl
 
-      - name: Run Falco on valid VCL with verbosity
+      - name: Run Falco on valid VCL with normal verbosity
         uses: ./
         with:
           subcommand: lint
-          verbosity: -v
+          verbosity: normal
           target: test/vcl/valid.vcl
 
-      - name: Run Falco on valid VCL with most verbosity
+      - name: Run Falco on valid VCL with high verbosity
         uses: ./
         with:
           subcommand: lint
-          verbosity: -vv
+          verbosity: high
           target: test/vcl/valid.vcl
 
-      - name: Run Falco on valid VCL with include
+      - name: Run Falco on valid VCL with include, normal velocity
         uses: ./
         with:
           subcommand: lint
-          verbosity: -vv
+          verbosity: normal
           include: test/vcl/blocked_urls.vcl
           target: test/vcl/valid_with_include.vcl
 
