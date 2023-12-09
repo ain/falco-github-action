@@ -9,10 +9,10 @@ then
 fi
 
 verbosity=""
-if [ $3 == "normal" ]
+if [[ $3 == "normal" ]]
 then
   verbosity="-v"
-elif [ $3 == "high" ]
+elif [[ $3 == "high" ]]
 then
   verbosity="-vv"
 fi
