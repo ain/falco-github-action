@@ -13,6 +13,7 @@ if [ $3 == "normal" ]
 then
   verbosity="-v"
 elif [ $3 == "high" ]
+then
   verbosity="-vv"
 fi
 
