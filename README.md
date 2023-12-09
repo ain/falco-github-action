@@ -1,6 +1,6 @@
 # falco-github-action
 
-Falco GitHub Action for VCL validation.
+Falco GitHub Action for VCL parsing and validation.
 
 ## Usage
 

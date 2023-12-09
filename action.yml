@@ -1,5 +1,5 @@
-name: 'Falco'
-description: 'Falco Fastly VCL parser'
+name: 'Falco VCL parser'
+description: 'Falco Fastly VCL parser and linter'
 inputs:
   subcommand:
     description: 'Falco subcommand'
