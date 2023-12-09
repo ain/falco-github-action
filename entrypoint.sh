@@ -5,7 +5,7 @@ set -e
 include=""
 if [ -n $2 ]
 then
-  include="-I ${$2}"
+  include="-I ${2}"
 fi
 
 verbosity=""
