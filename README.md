@@ -8,7 +8,7 @@ Based on [Falco](https://github.com/ysugimoto/falco).
 
 ```yaml
 - name: Lint VCL
-  uses: ain/falco-github-action@latest
+  uses: ain/falco-github-action@v1
   with:
     subcommand: lint
     options: "-v -I test/vcl/includes"
