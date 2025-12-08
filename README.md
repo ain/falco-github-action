@@ -45,6 +45,11 @@ jobs:
           target: ${{ matrix.target }}
 ```
 
+## Testing the action
+
+1. GitHub Actions is configured to run tests using ACL/VCL fixtures in the `test/` folder
+2. Local tests can be run using the `\test.sh` script in the project root
+
 ## Licence
 
 Copyright © 2023-2025 Ain Tohvri and [contributors](https://github.com/ain/falco-github-action/graphs/contributors). Licenced under [MIT](LICENSE).
