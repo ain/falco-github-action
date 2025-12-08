@@ -48,7 +48,7 @@ jobs:
 ## Testing the action
 
 1. GitHub Actions is configured to run tests using ACL/VCL fixtures in the `test/` folder
-2. Local tests can be run using the `\test.sh` script in the project root
+2. Local tests can be run using the `./test.sh` script in the project root
 
 ## Licence
 
