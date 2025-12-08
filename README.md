@@ -47,4 +47,4 @@ jobs:
 
 ## Licence
 
-Copyright © 2023 Ain Tohvri. Licenced under [MIT](LICENSE).
+Copyright © 2023-2025 Ain Tohvri and [contributors](https://github.com/ain/falco-github-action/graphs/contributors). Licenced under [MIT](LICENSE).
