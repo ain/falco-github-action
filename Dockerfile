@@ -1,4 +1,4 @@
-FROM golang:1.21
+FROM golang:latest
 
 LABEL version="0.0.1"
 LABEL maintainer="Ain Tohvri <ain@flashbit.net>"
