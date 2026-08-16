@@ -6,7 +6,7 @@ inputs:
     required: true
     default: 'lint'
   target:
-    description: 'File path to VCL'
+    description: 'File path to VCL, or a wildcard pattern matching several'
     required: true
   options:
     description: 'Optional flags'

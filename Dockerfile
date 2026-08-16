@@ -1,7 +1,7 @@
 FROM golang:latest
 
 LABEL org.opencontainers.image.authors="Ain Tohvri <ain@flashbit.net>" \
-      org.opencontainers.image.version="1.0.1"
+      org.opencontainers.image.version="1.1.0"
 
 RUN go install github.com/ysugimoto/falco/cmd/falco@latest
 

@@ -98,6 +98,24 @@ run_test "test/acl/invalid_syntax.acl" "" "false" "invalid_syntax.acl"
 run_test "test/acl/invalid_ip.acl" "" "false" "invalid_ip.acl"
 run_test "test/acl/invalid_range.acl" "" "false" "invalid_range.acl"
 
+# Wildcard targets. Quoted here so the pattern reaches the container unexpanded —
+# it is the entrypoint, not this shell, that resolves it.
+run_test "test/vcl/valid*.vcl" "-I test/vcl/includes" "true" "wildcard matching only valid VCL"
+
+# Every file in the directory, which drags invalid_syntax.vcl in with it: one bad
+# match has to fail the run.
+run_test "test/vcl/*.vcl" "-I test/vcl/includes" "false" "wildcard matching an invalid VCL"
+
+# "**" recurses, so this reaches test/vcl/ from test/.
+run_test "test/**/valid*.vcl" "-I test/vcl/includes" "true" "recursive wildcard"
+
+# A pattern matching nothing is an error, not a silent pass.
+run_test "test/vcl/*.nonexistent" "" "false" "wildcard matching no files"
+
+# Paths are only word-split when they do not exist, so spaces survive.
+cp "$SCRIPT_DIR/test/vcl/valid.vcl" "$TMP_DIR/valid with space.vcl"
+run_test "tmp/valid with space.vcl" "" "true" "path containing a space"
+
 echo ""
 echo "=========================================="
 echo "Test Results: $PASSED passed, $FAILED failed, $TOTAL total"

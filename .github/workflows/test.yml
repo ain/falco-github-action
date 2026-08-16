@@ -85,8 +85,62 @@ jobs:
           options: "-v -I test/vcl/includes"
           target: test/vcl/valid_with_include.vcl
 
+      - name: Run Falco on a wildcard target
+        uses: ./
+        with:
+          subcommand: lint
+          options: "-I test/vcl/includes"
+          target: "test/vcl/valid*.vcl"
+
+      - name: Run Falco on a recursive wildcard target
+        uses: ./
+        with:
+          subcommand: lint
+          options: "-I test/vcl/includes"
+          target: "test/**/valid*.vcl"
+
       #- name: Run Falco on invalid VCL
         #uses: ./
         #with:
           #subcommand: lint
           #target: test/vcl/invalid_syntax.acl
+
+  # Exercises the discover-then-fan-out matrix documented in the README, which
+  # remains the way to lint many files as separate parallel jobs. A wildcard
+  # `target` handled inside one job is covered by the `vcl` job above.
+  discover:
+    runs-on: ubuntu-latest
+
+    outputs:
+      targets: ${{ steps.find.outputs.targets }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Discover VCL targets
+        id: find
+        run: |
+          targets=$(find test/vcl -name 'valid*.vcl' -not -path '*/includes/*' \
+            | jq -R -c . | jq -s -c .)
+          echo "targets=$targets" >> "$GITHUB_OUTPUT"
+          echo "Discovered: $targets"
+
+  wildcard:
+    needs: discover
+    if: needs.discover.outputs.targets != '[]'
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        target: ${{ fromJson(needs.discover.outputs.targets) }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run Falco on discovered VCL
+        uses: ./
+        with:
+          subcommand: lint
+          options: "-I test/vcl/includes"
+          target: ${{ matrix.target }}
