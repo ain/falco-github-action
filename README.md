@@ -4,6 +4,8 @@ GitHub Action for Fastly VCL parsing and validation.
 
 Based on [Falco](https://github.com/ysugimoto/falco).
 
+See also the [Linting Fastly VCL with Falco GitHub Action](https://tekkie.dev/devops/fastly-vcl-linting) on tekkie.dev.
+
 ## Usage
 
 ```yaml
